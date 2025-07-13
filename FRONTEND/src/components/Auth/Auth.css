@@ -1,0 +1,22 @@
+.auth-container {
+  min-height: 100vh;
+  background: linear-gradient(to top left, #e3f2fd, #ffffff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.auth-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.auth-toggle {
+  color: #1976d2;
+  cursor: pointer;
+  font-weight: 500;
+}
