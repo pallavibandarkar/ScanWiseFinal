@@ -42,8 +42,8 @@ router.post('/analyze-resume',upload.single('resume'),async (req, res) => {
       }
       const data = await pdfParse(buffer);
       resumeText = data.text;
-      console.log(resumeText);
-      console.log(jobDescription);
+      // console.log(resumeText);
+      // console.log(jobDescription);
     } else if (
       req.file.mimetype === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
     ) {
@@ -109,12 +109,12 @@ ${jobDescription}
       aiResponse: aiFeedback
     });
     
-    console.log("Scan Doc "+scanDoc);
-    console.log("Resume doc"+resumeDoc)
+    // console.log("Scan Doc "+scanDoc);
+    // console.log("Resume doc"+resumeDoc)
 
     res.status(200).json({ msg: "Resume analyzed and stored", aiResponse: aiFeedback ,scanId:scanDoc._id });
   } catch (err) {
-    console.error('Gemini Error:', err.message);
+    // console.error('Gemini Error:', err.message);
     res.status(500).json({ error: 'Something went wrong', detail: err.message });
   } finally {
     if (filePath) fs.unlink(filePath, () => {});
@@ -131,7 +131,7 @@ router.get('/recentScans/:userId', async (req, res) => {
 
     res.status(200).json(recentScans);
   } catch (err) {
-    console.error(err);
+    // console.error(err);
     res.status(500).json({ error: 'Failed to fetch recent scans' });
   }
 });
@@ -150,12 +150,12 @@ router.get('/scans/:scanId', async (req, res) => {
 router.get('/history', isLoggedIn, async (req, res) => {
   
   try {
-    console.log(req.user)
+    // console.log(req.user)
     const scans = await Scan.find({ user: req.user.userId}).populate('resume');
-    console.log(scans)
+    // console.log(scans)
     res.status(200).json({ data: scans , msg:"History Found" });
   } catch (err) {
-    console.error('Error fetching history:', err.message);
+    //console.error('Error fetching history:', err.message);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });

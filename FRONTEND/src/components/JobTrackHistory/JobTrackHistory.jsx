@@ -144,7 +144,7 @@ export default function JobTrackHistory({isSidebarOpen}) {
                 <Button 
                   variant="contained" 
                   color="primary"
-                  onClick={() => navigate('/add-application')}
+                  onClick={() => navigate('/jobtracker')}
                   sx={{ mt: 2 }}
                 >
                   Add Your First Application

@@ -69,11 +69,9 @@ module.exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    console.log("User",user)
     if (!user) return res.status(400).json({ error: 'Invalid credentials' });
 
     const isMatch = await user.comparePassword(password);
-    console.log("Match",isMatch)
     if (!isMatch) return res.status(400).json({ error: 'Invalid credentials' });
 
     if (!user.verified) {

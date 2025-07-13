@@ -7,7 +7,6 @@ const User = require('../models/user.js')
 // Add to tracker
 router.post('/add', isLoggedIn,async (req, res) => {
   try {
-    console.log("User",req.user)
     const id = req.user.userId;
     const tracker = new JobTracker({
         user:id,
@@ -33,7 +32,6 @@ router.post('/add', isLoggedIn,async (req, res) => {
     }
     res.status(201).json({ message: 'Job added to tracker', result });
   } catch (err) {
-    console.log(err)
     res.status(500).json({ error: 'Failed to add job to tracker', details: err.message });
   }
 });
@@ -41,9 +39,9 @@ router.post('/add', isLoggedIn,async (req, res) => {
 
 router.get('/user', isLoggedIn,async (req, res) => {
   try {
-    console.log(req.user)
+    //console.log(req.user)
     const jobs = await JobTracker.find({ user: req.user.userId });
-    console.log(jobs)
+    //console.log(jobs)
     res.status(200).json({ data: jobs });
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch job tracker entries' });

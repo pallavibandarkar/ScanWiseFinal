@@ -122,5 +122,5 @@ ${jobDescription}
 });
 
 app.listen(8080, () => {
-  console.log('✅ Gemini Resume Screener API running at http://localhost:8080');
+  console.log(' Gemini Resume Screener API running at http://localhost:8080');
 });
