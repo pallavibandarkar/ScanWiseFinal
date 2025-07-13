@@ -123,6 +123,6 @@ ${jobDescription}
   }
 });
 
-app.listen(PORT, () => {
+app.listen(PORT || 8080, () => {
   console.log(' Gemini Resume Screener API running at http://localhost:8080');
 });
