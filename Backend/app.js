@@ -13,7 +13,7 @@ const mongoose = require('mongoose')
 const userRouter = require('./routes/user.js')
 const resumeRouter = require('./routes/resume.js')
 const trackRouter = require('./routes/jobTracker.js')
-
+const PORT = process.env.PORT
 const app = express();
 const upload = multer({ dest: 'uploads/' });
 
@@ -41,7 +41,9 @@ app.use('/track',trackRouter)
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY, {
   apiEndpoint: 'https://generativelanguage.googleapis.com/v1' // ✅ use v1
 });
-
+app.get("/hello",(req,res)=>{
+  res.send("welcome back")
+})
 app.post('/analyze-resume', upload.single('resume'), async (req, res) => {
   const filePath = req.file?.path;
 
@@ -121,6 +123,6 @@ ${jobDescription}
   }
 });
 
-app.listen(8080, () => {
+app.listen(PORT, () => {
   console.log(' Gemini Resume Screener API running at http://localhost:8080');
 });
