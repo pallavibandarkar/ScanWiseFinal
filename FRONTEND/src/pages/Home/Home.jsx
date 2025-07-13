@@ -9,16 +9,17 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import HistoryIcon from '@mui/icons-material/History';
 import CloudDoneIcon from '@mui/icons-material/CloudDone';
-
+import { useNavigate } from "react-router";
 
 export default function Home(){
+  const navigate = useNavigate()
     return(
         <> 
             <section className="hero-section">
                 <div className="text-content">
                     <h1>Optimize your resume to get more interviews</h1>
                     <p>ScanWise helps you tailor your resume to any job by identifying key skills and improving your match rate.</p>
-                    <Button variant="contained">Start Scanning</Button>
+                    <Button variant="contained" onClick={()=>{navigate('/scanwise/dashboard')}}>Start Scanning</Button>
                 </div>
                 <div className="image-or-upload">
                     <img src={assests.resume} alt="Resume Optimization" />

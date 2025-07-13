@@ -9,7 +9,7 @@ import { useAuth } from "../../context/AuthContext.jsx";
 
 export default function Auth() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login ,BASE_URL} = useAuth();
   const [isLogin, setIsLogin] = useState(true);
   const [form, setForm] = useState({ email: "", password: "" });
 
@@ -18,21 +18,21 @@ export default function Auth() {
   };
 
   const handleSubmit = async () => {
-    const url = isLogin ? "http://localhost:8080/user/login" : "http://localhost:8080/user/signup";
+    const url = isLogin ? `${BASE_URL}/user/login` : `${BASE_URL}/user/signup`;
     try {
       const res = await axios.post(url, form);
       console.log(res)
        if (!isLogin && res.data.email) {
       // Save email for OTP verification
         localStorage.setItem("verifyEmail", res.data.email);
-        navigate("/verify");
+        navigate("/scanwise/verify");
         return;
       }
 
 
       if (res.data.user && res.data.token) {
         login(res.data.user, res.data.token);
-        navigate("/dashboard");
+        navigate("/scanwise/dashboard");
       }
       setForm({
         email:"",
@@ -44,7 +44,7 @@ export default function Auth() {
       if (isLogin && err.response?.status === 403 && err.response?.data?.email) {
         localStorage.setItem("verifyEmail", err.response.data.email);
         toast.error("Email not verified. Please verify.");
-        navigate("/verify");
+        navigate("/scanwise/verify");
         return;
       }
       toast.error(err.response?.data?.error || "Something went wrong");

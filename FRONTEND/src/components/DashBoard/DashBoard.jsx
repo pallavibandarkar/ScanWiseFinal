@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router';
 import Sidebar from '../Sidebar/Sidebar';
 
 export default function Dashboard({ isSidebarOpen }) {
-  const { user } = useAuth();
+  const { user ,BASE_URL} = useAuth();
   const [resumeFile, setResumeFile] = useState(null);
   const [jobDescription, setJobDescription] = useState('');
   const [jobTitle, setJobTitle] = useState('');
@@ -35,7 +35,7 @@ export default function Dashboard({ isSidebarOpen }) {
     formData.append('jobTitle', jobTitle);
 
     try {
-      const res = await axios.post('http://localhost:8080/resume/analyze-resume', formData, {
+      const res = await axios.post(`${BASE_URL}/resume/analyze-resume`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -43,7 +43,7 @@ export default function Dashboard({ isSidebarOpen }) {
 
       toast.success("Resume Analyzed!");
       const scanId = res.data.scanId;
-      navigate(`/report/${scanId}`);
+      navigate(`/scanwise/report/${scanId}`);
       setResumeFile(null);
       setJobTitle('');
       setJobDescription('');
@@ -57,7 +57,7 @@ export default function Dashboard({ isSidebarOpen }) {
   useEffect(() => {
     const fetchRecent = async () => {
       try {
-        const res = await axios.get(`http://localhost:8080/resume/recentScans/${user.id}`);
+        const res = await axios.get(`${BASE_URL}/resume/recentScans/${user.id}`);
         setRecentScans(res.data);
       } catch (err) {
         console.log(err);

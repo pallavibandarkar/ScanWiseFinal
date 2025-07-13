@@ -19,6 +19,7 @@ import { CircularProgress } from '@mui/material';
 
 export default function EditJobTrack({ isSidebarOpen }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const {BASE_URL} = useAuth()
   const { id } = useParams();
   const navigate = useNavigate();
   const { token } = useAuth()
@@ -42,7 +43,7 @@ export default function EditJobTrack({ isSidebarOpen }) {
 
     useEffect(() => {
     const fetchTracker = async () => {
-      const res = await axios.get(`http://localhost:8080/track/job/${id}`,{
+      const res = await axios.get(`${BASE_URL}/track/job/${id}`,{
         headers: { Authorization: `Bearer ${token}` }
       });
       setFormData(res.data.data)
@@ -95,12 +96,12 @@ export default function EditJobTrack({ isSidebarOpen }) {
   e.preventDefault();
   setIsSubmitting(true); 
   try {
-    const result = await axios.put(`http://localhost:8080/track/update/${id}`, formData, {
+    const result = await axios.put(`${BASE_URL}/track/update/${id}`, formData, {
       headers: { Authorization: `Bearer ${token}` }
     });
     console.log("Updated Data:", result.data);
     toast.success("Updated the details");
-    navigate('/jobhistory');
+    navigate('/scanwise/jobhistory');
   } catch (error) {
     console.error("Error updating job:", error);
     toast.error("Failed to update. Try again.");

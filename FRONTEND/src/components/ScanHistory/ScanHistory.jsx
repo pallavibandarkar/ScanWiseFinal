@@ -30,17 +30,17 @@ export default function ScanHistory({isSidebarOpen}) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const { token } = useAuth();
+  const { token ,BASE_URL} = useAuth();
 
   useEffect(() => {
     const fetchHistory = async () => {
       try {
         setLoading(true);
-        const res = await axios.get('http://localhost:8080/resume/history', {
+        const res = await axios.get(`${BASE_URL}/resume/history`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setScans(res.data.data);
-        console.log(res.data.data);
+        
       } catch (err) {
         console.error('Failed to fetch scan history:', err);
         setError('Failed to fetch scan history. Please try again.');
@@ -163,7 +163,7 @@ export default function ScanHistory({isSidebarOpen}) {
                         variant="contained"
                         size="small"
                         startIcon={<VisibilityIcon />}
-                        onClick={() => navigate(`/report/${scan._id}`)}
+                        onClick={() => navigate(`/scanwise/report/${scan._id}`)}
                         className="action-button primary-button"
                       >
                         Report
@@ -207,7 +207,7 @@ export default function ScanHistory({isSidebarOpen}) {
                     </Box>
                   </TableCell>
                   <TableCell align="center" className="score-cell">
-                    <Button startIcon={<WorkIcon/>}size="small" onClick={()=>navigate('/jobtracker')}></Button>
+                    <Button startIcon={<WorkIcon/>}size="small" onClick={()=>navigate('/scanwise/jobtracker')}></Button>
                   </TableCell>
                 </TableRow>
               ))}

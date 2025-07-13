@@ -5,7 +5,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-
+  const BASE_URL = "https://scanwiseb.onrender.com"; 
   useEffect(() => {
     const savedUser = JSON.parse(localStorage.getItem("user"));
     const savedToken = localStorage.getItem("token");
@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, token, login, logout }}>
+    <AuthContext.Provider value={{ user, token, login, logout,BASE_URL }}>
       {children}
     </AuthContext.Provider>
   );

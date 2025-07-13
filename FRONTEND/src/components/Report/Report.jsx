@@ -11,6 +11,7 @@ import StarIcon from '@mui/icons-material/Star';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import {Typography,Grid,Button} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 import Sidebar from '../Sidebar/Sidebar';
 
@@ -18,6 +19,7 @@ export default function Report({isSidebarOpen}) {
   const { scanId } = useParams();
   const [scan, setScan] = useState(null);
   const navigate = useNavigate();
+  const { BASE_URL } = useAuth()
 
   const handleTrackClick = () => {
     const trackData = {
@@ -29,12 +31,12 @@ export default function Report({isSidebarOpen}) {
     };
     console.log(trackData)
     localStorage.setItem('jobTrackDraft', JSON.stringify(trackData));
-    navigate('/jobtracker');
+    navigate('/scanwise/jobtracker');
    };
   useEffect(() => {
     const fetchScan = async () => {
       try {
-        const res = await axios.get(`http://localhost:8080/resume/scans/${scanId}`);
+        const res = await axios.get(`${BASE_URL}/resume/scans/${scanId}`);
         console.log(res.data.data)
         setScan(res.data.data);
       } catch (err) {

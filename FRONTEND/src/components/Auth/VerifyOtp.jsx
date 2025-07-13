@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { useAuth } from '../../context/AuthContext';
 
 export default function VerifyOtp() {
-  const { login } = useAuth();
+  const { login, BASE_URL } = useAuth();
   const navigate = useNavigate();
   const [otp, setOtp] = useState('');
   const [email, setEmail] = useState('');
@@ -16,7 +16,7 @@ export default function VerifyOtp() {
   useEffect(() => {
     const storedEmail = localStorage.getItem('verifyEmail');
     if (!storedEmail) {
-      navigate('/auth');
+      navigate('/scanwise/auth');
     } else {
       setEmail(storedEmail);
     }
@@ -44,7 +44,7 @@ export default function VerifyOtp() {
 
   const handleVerify = async () => {
     try {
-      const res = await axios.post('http://localhost:8080/user/verify-otp', {
+      const res = await axios.post(`${BASE_URL}/user/verify-otp`, {
         email,
         otp,
       });
@@ -54,7 +54,7 @@ export default function VerifyOtp() {
 
       if (res.data.user && res.data.token) {
         login(res.data.user, res.data.token);
-        navigate('/dashboard');
+        navigate('/scanwise/dashboard');
       }
     } catch (err) {
       toast.error(err.response?.data?.message || 'Invalid or expired OTP');
@@ -63,7 +63,7 @@ export default function VerifyOtp() {
 
   const handleResend = async () => {
     try {
-      await axios.post('http://localhost:8080/user/resend-otp', { email });
+      await axios.post(`${BASE_URL}/user/resend-otp`, { email });
       toast.success('OTP resent successfully');
       setTimer(60);
       setDisabledResend(true);

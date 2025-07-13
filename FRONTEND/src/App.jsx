@@ -23,21 +23,21 @@ function App() {
     <>
       <Navbar toggleSidebar={toggleSidebar} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/scanwise" element={<Home />} />
         {!user ? (
           <>
-            <Route path="/auth" element={<Auth />} />
-            <Route path='/verify' element={<VerifyOtp/>}/>
-            <Route path="*" element={<Navigate to="/" />} />
+            <Route path="/scanwise/auth" element={<Auth />} />
+            <Route path='/scanwise/verify' element={<VerifyOtp/>}/>
+            <Route path="*" element={<Navigate to="/scanwise" />} />
           </>
         ) : (
           <>
-            <Route path="/dashboard" element={<Dashboard isSidebarOpen={isSidebarOpen}/>} />
-            <Route path="/report/:scanId" element={<Report isSidebarOpen={isSidebarOpen}/>}/>
-            <Route path='/jobtracker' element={<JobTracker isSidebarOpen={isSidebarOpen}/>}/>
-            <Route path='/history' element={<ScanHistory isSidebarOpen={isSidebarOpen}/>}/>
-            <Route path='/EditJobdetails/:id' element={<EditJobTrack isSidebarOpen={isSidebarOpen}/>}/>
-            <Route path='/jobhistory' element={<JobTrackHistory isSidebarOpen={isSidebarOpen}/>}/>
+            <Route path="/scanwise/dashboard" element={<Dashboard isSidebarOpen={isSidebarOpen}/>} />
+            <Route path="/scanwise/report/:scanId" element={<Report isSidebarOpen={isSidebarOpen}/>}/>
+            <Route path='/scanwise/jobtracker' element={<JobTracker isSidebarOpen={isSidebarOpen}/>}/>
+            <Route path='/scanwise/history' element={<ScanHistory isSidebarOpen={isSidebarOpen}/>}/>
+            <Route path='/scanwise/EditJobdetails/:id' element={<EditJobTrack isSidebarOpen={isSidebarOpen}/>}/>
+            <Route path='/scanwise/jobhistory' element={<JobTrackHistory isSidebarOpen={isSidebarOpen}/>}/>
             {/* <Route path="*" element={<Navigate to="/dashboard" />} /> */}
           </>
         )}

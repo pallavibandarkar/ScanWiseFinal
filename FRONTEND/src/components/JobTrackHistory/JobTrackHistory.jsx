@@ -36,13 +36,13 @@ import Sidebar from '../Sidebar/Sidebar';
 
 export default function JobTrackHistory({isSidebarOpen}) {
   const [entries, setEntries] = useState([]);
-  const { user } = useAuth();
+  const { user,BASE_URL } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchHistory = async () => {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:8080/track/user/', {
+      const res = await axios.get(`${BASE_URL}/track/user/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setEntries(res.data.data);
@@ -86,7 +86,7 @@ export default function JobTrackHistory({isSidebarOpen}) {
     <div className="page-layout">
       <Sidebar isSidebarOpen={isSidebarOpen} />
       <main className={`main-content ${isSidebarOpen ? 'sidebar-open' : 'sidebar-collapsed'}`}>
-        <Button className="print-btn" variant="contained" onClick={() => navigate('/jobtracker')}>
+        <Button className="print-btn" variant="contained" onClick={() => navigate('/scanwise/jobtracker')}>
           Add to track
         </Button>
         <Container maxWidth="xl" className="content-container">
@@ -144,7 +144,7 @@ export default function JobTrackHistory({isSidebarOpen}) {
                 <Button 
                   variant="contained" 
                   color="primary"
-                  onClick={() => navigate('/jobtracker')}
+                  onClick={() => navigate('/scanwise/jobtracker')}
                   sx={{ mt: 2 }}
                 >
                   Add Your First Application
@@ -246,7 +246,7 @@ export default function JobTrackHistory({isSidebarOpen}) {
                         <Tooltip title="Edit Application">
                           <IconButton 
                             size="small"
-                            onClick={() => navigate(`/EditJobdetails/${entry._id}`)}
+                            onClick={() => navigate(`/scanwise/EditJobdetails/${entry._id}`)}
                             className="edit-button"
                           >
                             <Edit />

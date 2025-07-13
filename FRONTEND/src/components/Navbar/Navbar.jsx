@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router';
 
 
 export default function Navbar({toggleSidebar}){
-    const { user,logout } = useAuth();
+    const { user,logout,BASE_URL } = useAuth();
     const navigate = useNavigate();
     // const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     // const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
@@ -25,8 +25,8 @@ export default function Navbar({toggleSidebar}){
                             <MenuIcon />
                         </button>
                     )}
-                    <FindInPageIcon color="primary" fontSize="large" className='home' onClick={()=> navigate('/')}/>
-                    <Typography variant="h6" component="div" color="primary" fontWeight={600} fontSize={20}  className='home' onClick={()=> navigate('/')}>
+                    <FindInPageIcon color="primary" fontSize="large" className='home' onClick={()=> navigate('/scanwise')}/>
+                    <Typography variant="h6" component="div" color="primary" fontWeight={600} fontSize={20}  className='home' onClick={()=> navigate('/scanwise')}>
                     ScanWise
                     </Typography>
                 </Stack>
@@ -34,15 +34,15 @@ export default function Navbar({toggleSidebar}){
             <div className="nav-btns">
                 {!user ? (
                 <>
-                    <Button variant="outlined" className="btn" onClick={() => navigate('/auth')}>
+                    <Button variant="outlined" className="btn" onClick={() => navigate('/scanwise/auth')}>
                         Login
                     </Button>
-                    <Button variant="contained" className="btn" onClick={() => navigate('/auth')}>
+                    <Button variant="contained" className="btn" onClick={() => navigate('/scanwise/auth')}>
                         Sign Up
                     </Button>
                 </>
                 ) : (
-                    <Button variant="outlined" className="btn" onClick={()=>navigate('/dashboard')}>
+                    <Button variant="outlined" className="btn" onClick={()=>navigate('/scanwise/dashboard')}>
                         Dashboard
                     </Button>
                 )}

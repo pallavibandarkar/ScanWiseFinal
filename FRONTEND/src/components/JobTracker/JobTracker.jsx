@@ -19,7 +19,7 @@ import { CircularProgress } from '@mui/material';
 
 export default function JobTracker({ isSidebarOpen }) {
   const navigate = useNavigate()
-  const { token } = useAuth()
+  const { token,BASE_URL } = useAuth()
   const [formData, setFormData] = useState({
     jobTitle: '',
     companyName: '',
@@ -44,7 +44,7 @@ export default function JobTracker({ isSidebarOpen }) {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-        const result = await axios.post("http://localhost:8080/track/add",formData,{
+        const result = await axios.post(`${BASE_URL}/track/add`,formData,{
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -65,7 +65,7 @@ export default function JobTracker({ isSidebarOpen }) {
         });
       toast.success("Added to job track")
       console.log("Navigating to jobhistory...");
-      navigate('/jobhistory'); 
+      navigate('/scanwise/jobhistory'); 
     } catch (error) {
       console.error('Error submitting job application:', error);
     } finally {

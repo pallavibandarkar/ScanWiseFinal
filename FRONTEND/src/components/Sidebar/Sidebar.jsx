@@ -13,16 +13,16 @@ export default function Sidebar({ isSidebarOpen }){
     return(
     <div className={`sidebar ${isSidebarOpen ? 'open' : 'collapsed'}`}>
         <nav>
-          <a onClick={()=>navigate('/dashboard')}>
+          <a onClick={()=>navigate('/scanwise/dashboard')}>
             <HomeIcon /> {isSidebarOpen && <span>Dashboard</span>}
           </a>
-          <a onClick={()=>navigate('/dashboard')}>
+          <a onClick={()=>navigate('/scanwise/dashboard')}>
             <DescriptionIcon /> {isSidebarOpen && <span>New Scan</span>}
           </a>
-          <a onClick={()=>navigate('/history')}>
+          <a onClick={()=>navigate('/scanwise/history')}>
             <HistoryIcon /> {isSidebarOpen && <span>Scan History</span>}
           </a>
-          <a onClick={()=>navigate('/jobhistory')}>
+          <a onClick={()=>navigate('/scanwise/jobhistory')}>
             <WorkIcon /> {isSidebarOpen && <span>Job Tracker</span>}
           </a>
           <a onClick={logout}>
