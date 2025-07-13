@@ -86,7 +86,7 @@ export default function JobTrackHistory({isSidebarOpen}) {
     <div className="page-layout">
       <Sidebar isSidebarOpen={isSidebarOpen} />
       <main className={`main-content ${isSidebarOpen ? 'sidebar-open' : 'sidebar-collapsed'}`}>
-        <Button className="print-btn" variant="contained" onClick={() => navigate('/scanwise/jobtracker')}>
+        <Button className="print-btn" variant="contained" onClick={() => navigate('/jobtracker')}>
           Add to track
         </Button>
         <Container maxWidth="xl" className="content-container">
@@ -144,7 +144,7 @@ export default function JobTrackHistory({isSidebarOpen}) {
                 <Button 
                   variant="contained" 
                   color="primary"
-                  onClick={() => navigate('/scanwise/jobtracker')}
+                  onClick={() => navigate('/jobtracker')}
                   sx={{ mt: 2 }}
                 >
                   Add Your First Application
@@ -246,7 +246,7 @@ export default function JobTrackHistory({isSidebarOpen}) {
                         <Tooltip title="Edit Application">
                           <IconButton 
                             size="small"
-                            onClick={() => navigate(`/scanwise/EditJobdetails/${entry._id}`)}
+                            onClick={() => navigate(`/EditJobdetails/${entry._id}`)}
                             className="edit-button"
                           >
                             <Edit />

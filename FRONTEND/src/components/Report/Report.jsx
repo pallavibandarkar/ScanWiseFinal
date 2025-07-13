@@ -31,7 +31,7 @@ export default function Report({isSidebarOpen}) {
     };
     console.log(trackData)
     localStorage.setItem('jobTrackDraft', JSON.stringify(trackData));
-    navigate('/scanwise/jobtracker');
+    navigate('/jobtracker');
    };
   useEffect(() => {
     const fetchScan = async () => {

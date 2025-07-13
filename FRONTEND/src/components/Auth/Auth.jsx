@@ -25,14 +25,14 @@ export default function Auth() {
        if (!isLogin && res.data.email) {
       // Save email for OTP verification
         localStorage.setItem("verifyEmail", res.data.email);
-        navigate("/scanwise/verify");
+        navigate("/verify");
         return;
       }
 
 
       if (res.data.user && res.data.token) {
         login(res.data.user, res.data.token);
-        navigate("/scanwise/dashboard");
+        navigate("/dashboard");
       }
       setForm({
         email:"",
@@ -44,7 +44,7 @@ export default function Auth() {
       if (isLogin && err.response?.status === 403 && err.response?.data?.email) {
         localStorage.setItem("verifyEmail", err.response.data.email);
         toast.error("Email not verified. Please verify.");
-        navigate("/scanwise/verify");
+        navigate("/verify");
         return;
       }
       toast.error(err.response?.data?.error || "Something went wrong");

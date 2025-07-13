@@ -43,7 +43,7 @@ export default function Dashboard({ isSidebarOpen }) {
 
       toast.success("Resume Analyzed!");
       const scanId = res.data.scanId;
-      navigate(`/scanwise/report/${scanId}`);
+      navigate(`/report/${scanId}`);
       setResumeFile(null);
       setJobTitle('');
       setJobDescription('');

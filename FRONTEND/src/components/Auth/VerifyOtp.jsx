@@ -16,7 +16,7 @@ export default function VerifyOtp() {
   useEffect(() => {
     const storedEmail = localStorage.getItem('verifyEmail');
     if (!storedEmail) {
-      navigate('/scanwise/auth');
+      navigate('/auth');
     } else {
       setEmail(storedEmail);
     }
@@ -54,7 +54,7 @@ export default function VerifyOtp() {
 
       if (res.data.user && res.data.token) {
         login(res.data.user, res.data.token);
-        navigate('/scanwise/dashboard');
+        navigate('/dashboard');
       }
     } catch (err) {
       toast.error(err.response?.data?.message || 'Invalid or expired OTP');

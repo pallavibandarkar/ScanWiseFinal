@@ -101,7 +101,7 @@ export default function EditJobTrack({ isSidebarOpen }) {
     });
     console.log("Updated Data:", result.data);
     toast.success("Updated the details");
-    navigate('/scanwise/jobhistory');
+    navigate('/jobhistory');
   } catch (error) {
     console.error("Error updating job:", error);
     toast.error("Failed to update. Try again.");

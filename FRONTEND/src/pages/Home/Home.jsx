@@ -19,7 +19,7 @@ export default function Home(){
                 <div className="text-content">
                     <h1>Optimize your resume to get more interviews</h1>
                     <p>ScanWise helps you tailor your resume to any job by identifying key skills and improving your match rate.</p>
-                    <Button variant="contained" onClick={()=>{navigate('/scanwise/dashboard')}}>Start Scanning</Button>
+                    <Button variant="contained" onClick={()=>{navigate('/dashboard')}}>Start Scanning</Button>
                 </div>
                 <div className="image-or-upload">
                     <img src={assests.resume} alt="Resume Optimization" />

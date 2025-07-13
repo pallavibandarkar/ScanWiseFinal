@@ -25,8 +25,8 @@ export default function Navbar({toggleSidebar}){
                             <MenuIcon />
                         </button>
                     )}
-                    <FindInPageIcon color="primary" fontSize="large" className='home' onClick={()=> navigate('/scanwise')}/>
-                    <Typography variant="h6" component="div" color="primary" fontWeight={600} fontSize={20}  className='home' onClick={()=> navigate('/scanwise')}>
+                    <FindInPageIcon color="primary" fontSize="large" className='home' onClick={()=> navigate('/')}/>
+                    <Typography variant="h6" component="div" color="primary" fontWeight={600} fontSize={20}  className='home' onClick={()=> navigate('/')}>
                     ScanWise
                     </Typography>
                 </Stack>
@@ -34,15 +34,15 @@ export default function Navbar({toggleSidebar}){
             <div className="nav-btns">
                 {!user ? (
                 <>
-                    <Button variant="outlined" className="btn" onClick={() => navigate('/scanwise/auth')}>
+                    <Button variant="outlined" className="btn" onClick={() => navigate('/auth')}>
                         Login
                     </Button>
-                    <Button variant="contained" className="btn" onClick={() => navigate('/scanwise/auth')}>
+                    <Button variant="contained" className="btn" onClick={() => navigate('/auth')}>
                         Sign Up
                     </Button>
                 </>
                 ) : (
-                    <Button variant="outlined" className="btn" onClick={()=>navigate('/scanwise/dashboard')}>
+                    <Button variant="outlined" className="btn" onClick={()=>navigate('/dashboard')}>
                         Dashboard
                     </Button>
                 )}

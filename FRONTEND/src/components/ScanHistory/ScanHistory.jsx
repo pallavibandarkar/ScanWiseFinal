@@ -163,7 +163,7 @@ export default function ScanHistory({isSidebarOpen}) {
                         variant="contained"
                         size="small"
                         startIcon={<VisibilityIcon />}
-                        onClick={() => navigate(`/scanwise/report/${scan._id}`)}
+                        onClick={() => navigate(`/report/${scan._id}`)}
                         className="action-button primary-button"
                       >
                         Report
@@ -207,7 +207,7 @@ export default function ScanHistory({isSidebarOpen}) {
                     </Box>
                   </TableCell>
                   <TableCell align="center" className="score-cell">
-                    <Button startIcon={<WorkIcon/>}size="small" onClick={()=>navigate('/scanwise/jobtracker')}></Button>
+                    <Button startIcon={<WorkIcon/>}size="small" onClick={()=>navigate('/jobtracker')}></Button>
                   </TableCell>
                 </TableRow>
               ))}

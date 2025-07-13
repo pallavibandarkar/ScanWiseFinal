@@ -65,7 +65,7 @@ export default function JobTracker({ isSidebarOpen }) {
         });
       toast.success("Added to job track")
       console.log("Navigating to jobhistory...");
-      navigate('/scanwise/jobhistory'); 
+      navigate('/jobhistory'); 
     } catch (error) {
       console.error('Error submitting job application:', error);
     } finally {
