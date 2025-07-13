@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Navbar from './components/Navbar/Navbar.jsx'
-import Home from './Pages/Home/Home.jsx'
+import Home from './pages/Home/Home.jsx'
 import Auth from './components/Auth/Auth.jsx'
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
