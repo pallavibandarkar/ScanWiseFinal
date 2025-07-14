@@ -5,19 +5,21 @@ import { TextField, Button, Typography, Paper } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useAuth } from "../../context/AuthContext.jsx";
-
+import { CircularProgress } from "@mui/material";
 
 export default function Auth() {
   const navigate = useNavigate();
   const { login ,BASE_URL} = useAuth();
   const [isLogin, setIsLogin] = useState(true);
   const [form, setForm] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async () => {
+    setLoading(true);
     const url = isLogin ? `${BASE_URL}/user/login` : `${BASE_URL}/user/signup`;
     try {
       const res = await axios.post(url, form);
@@ -48,6 +50,8 @@ export default function Auth() {
         return;
       }
       toast.error(err.response?.data?.error || "Something went wrong");
+    }finally {
+      setLoading(false); // ⬅️ hide loader
     }
   };
 
@@ -81,8 +85,9 @@ export default function Auth() {
           color="primary"
           onClick={handleSubmit}
           sx={{ mt: 2 }}
+          disabled={loading}
         >
-          {isLogin ? "LogIn" : "Sign Up"}
+          {loading ? <CircularProgress size={24} color="inherit" /> : isLogin ? "Log In" : "Sign Up"}
         </Button>
         <Typography variant="body2" align="center" sx={{ mt: 2 }}>
           {isLogin ? (
