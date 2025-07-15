@@ -1,4 +1,4 @@
-# 📄 ScanWise – AI-Powered Resume Analyzer
+# ScanWise – AI-Powered Resume Analyzer
 
 ScanWise is an AI-powered web platform that helps job seekers analyze their resumes against job descriptions and get smart, actionable feedback.
 
@@ -6,7 +6,7 @@ ScanWise is an AI-powered web platform that helps job seekers analyze their resu
 
 ---
 
-## ✨ Features
+## Features
 
 - Upload resumes and job descriptions to get AI-generated match feedback.
 - Email OTP-based signup/login system for user authentication.
@@ -15,7 +15,7 @@ ScanWise is an AI-powered web platform that helps job seekers analyze their resu
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 - **Frontend**: React.js, Material UI, CSS
 - **Backend**: Node.js, Express.js
